@@ -1,6 +1,6 @@
 :root {
     --main-font-family: "Open sans", sans-serif;
-    --background-color-body: #f0e6f6;
+    --background-color-body: #f4e1ff;
     --container-bg-color: rgba(135, 206, 235, 0.95);
     --word-area-letter-border-color: #2e4a62;
     --keyboard-button-bg-color: #e6e6fa;
@@ -110,10 +110,11 @@
   .keyboard__button {
     background-color: var(--keyboard-button-bg-color);
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 1em;
     padding: 5px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     outline: none;
     width: calc(100% / 9 - 5px);
