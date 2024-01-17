@@ -145,3 +145,13 @@ getRandomWord();
 
 playAgainBtn.addEventListener("click", getRandomWord);
 
+document.addEventListener("keydown", (e) => {
+    if (isGameActive && e.key.length === 1 && e.key.match(/[a-z]/i)) {
+      const button = keyboard.querySelector(
+        `button[key='${e.key.toLowerCase()}']`
+      );
+      if (button && !button.disabled) {
+        startGame(button, e.key.toLowerCase());
+      }
+    }
+  });
