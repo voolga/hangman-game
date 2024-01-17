@@ -1,0 +1,210 @@
+:root {
+    --main-font-family: "Open sans", sans-serif;
+    --background-color-body: #f0e6f6;
+    --container-bg-color: rgba(135, 206, 235, 0.95);
+    --word-area-letter-border-color: #2e4a62;
+    --keyboard-button-bg-color: #e6e6fa;
+    --keyboard-button-hover-bg-color: #add8e6;
+    --modal-bg-color: rgba(47, 79, 79, 0.6);
+    --modal-content-bg-color: #fff;
+    --modal-word-color: #5f9ea0;
+    --error-color: #b22222;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--main-font-family);
+  }
+  
+  body {
+    background-color: var(--background-color-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 10px;
+  }
+  
+  .container {
+    width: 880px;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    background-color: var(--container-bg-color);
+    padding: 60px 40px;
+    border-radius: 10px;
+  }
+  
+  .gallows-wrapper__img {
+    max-width: 270px;
+  }
+  
+  .gallows-wrapper__header {
+    font-size: 18vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    margin-top: 20px;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .word-area {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    justify-content: center;
+  }
+  
+  .word-area__letter {
+    width: 28px;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 3px solid var(--word-area-letter-border-color);
+  }
+  
+  .word-area__letter-correct {
+    border-color: transparent;
+    margin: -40px 0 35px;
+  }
+  
+  .hint-area {
+    text-align: center;
+    font-weight: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  
+  .hint-area__hint {
+    font-weight: 600;
+  }
+  
+  .incorrect-counter {
+    text-align: center;
+    font-weight: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  
+  .incorrect-counter span {
+    color: var(--error-color);
+    font-weight: 600;
+  }
+  
+  .keyboard {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .keyboard__button {
+    background-color: var(--keyboard-button-bg-color);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1em;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    width: calc(100% / 9 - 5px);
+  }
+  
+  .keyboard__button:hover {
+    background-color: var(--keyboard-button-hover-bg-color);
+  }
+  
+  .keyboard__button[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+    background-color: var(--word-area-letter-border-color);
+  }
+  
+  .game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding: 0 15px;
+    pointer-events: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--modal-bg-color);
+    transition: all 0.5s ease;
+  }
+  
+  .game-modal_show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .game-modal__content {
+    background-color: var(--modal-content-bg-color);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+  }
+  
+  .game-modal__title {
+    font-size: 5rem;
+  }
+  
+  .game-modal__subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .game-modal__message {
+    font-size: 1.1rem;
+    margin: 15px 30px;
+  }
+  
+  .game-modal__word {
+    font-weight: 800;
+    color: var(--modal-word-color);
+  }
+  
+  .game-modal__play-again {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    background-color: var(--background-color-body);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .game-modal__play-again:hover {
+    background-color: var(--keyboard-button-hover-bg-color);
+  }
+  
+  @media (max-width: 782px) {
+    .container {
+      flex-direction: column;
+      padding: 30px 20px;
+      align-items: center;
+    }
+  
+    .gallows-wrapper__img {
+      max-width: 200px;
+    }
+  }
+  
