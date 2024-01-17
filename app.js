@@ -74,6 +74,7 @@ const resetGame = () => {
 };
 
 const gameOver = (isVictory) => {
+  localStorage.setItem("lastWord", currentWord);
   isGameActive = false;
   let modalText;
 
@@ -95,8 +96,14 @@ const gameOver = (isVictory) => {
 };
 
 const getRandomWord = () => {
-  const { word, hint } =
-    questionList[Math.floor(Math.random() * questionList.length)];
+  let newWord;
+
+  do {
+    newWord =
+      questionList[Math.floor(Math.random() * questionList.length)];
+  } while (newWord === localStorage.getItem("lastWord"));
+
+  const { word, hint } = newWord;
   currentWord = word;
   document.querySelector(".hint-area__hint").innerText = hint;
   resetGame();
@@ -146,12 +153,12 @@ getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
 
 document.addEventListener("keydown", (e) => {
-    if (isGameActive && e.key.length === 1 && e.key.match(/[a-z]/i)) {
-      const button = keyboard.querySelector(
-        `button[key='${e.key.toLowerCase()}']`
-      );
-      if (button && !button.disabled) {
-        startGame(button, e.key.toLowerCase());
-      }
+  if (isGameActive && e.key.length === 1 && e.key.match(/[a-z]/i)) {
+    const button = keyboard.querySelector(
+      `button[key='${e.key.toLowerCase()}']`
+    );
+    if (button && !button.disabled) {
+      startGame(button, e.key.toLowerCase());
     }
-  });
+  }
+});
